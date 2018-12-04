@@ -1,6 +1,10 @@
 body {
 	display: grid;
-	grid-template-columns: 3fr 7fr
+	grid-template-columns: 3fr 7fr;
+	/* background-image: url(https://upload.wikimedia.org/wikipedia/en/c/ca/Studio_Ghibli_logo.svg);
+	width: cover; */
+	/* https://upload.wikimedia.org/wikipedia/en/c/ca/Studio_Ghibli_logo.svg */
+	/* https://upload.wikimedia.org/wikipedia/en/thumb/c/ca/Studio_Ghibli_logo.svg/2880px-Studio_Ghibli_logo.svg.png */
 }
 
 .characterCard {
@@ -38,10 +42,16 @@ border-radius: 12px;
     width: 17.5rem;
     height: 3rem;
     display: inline-block;
-    margin: 1rem 3rem;
+    margin: 1rem 6rem;
     box-shadow: 3px 4px #426778;
 }
 
 .movieName {
 	 text-align: center;
+}
+
+.name {
+	font-family: 'Poiret One', cursive;
+	    font-weight: lighter;
+	    color: #836f79;
 }
