@@ -111,5 +111,13 @@ function addNewCharacter(event, movieId){
       "Content-Type": "application/json"
     },
     body: JSON.stringify({character: data})
-  }).then(response => response.json()).then(data => console.log(data))
+  }).then(response => response.json()).then(data => showAddMessage(data))
+}
+
+function showAddMessage(data){
+  let characterContainer = document.getElementById('show-character-container')
+  characterContainer.innerHTML = ""
+  let characterAddedMessage = document.createElement('h1')
+  characterAddedMessage.innerText = `The character ${data.name} has been added!`
+  characterContainer.appendChild(characterAddedMessage)
 }
