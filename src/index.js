@@ -51,6 +51,10 @@ function renderCharacters(movieCharacters, movieName, movieId){
     let image = document.createElement('img')
     image.src = character.image_url
     divElement.appendChild(image)
+    let name = document.createElement('h3')
+    name.innerText = character.name
+    name.classList.add('name')
+    divElement.appendChild(name)
   })
 }
 
