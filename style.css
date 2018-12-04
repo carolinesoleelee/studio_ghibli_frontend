@@ -4,11 +4,44 @@ body {
 }
 
 .characterCard {
-  text-align: center;
-  border: rgb(12, 109, 163) solid 1px;
-  padding: 1rem;
-  width: 15rem;
-  height: 25rem;
-  display: inline-grid;
-  margin: 1rem 2rem;
-  /* box-shadow: 3px 4px #997375 */
+	text-align: center;
+	border: rgb(12, 109, 163) solid 1px;
+	padding: 1rem;
+	width: 31.5rem;
+	height: 21rem;
+	display: inline-grid;
+	margin: 1rem 2rem;
+	box-shadow: 3px 4px #426778;
+}
+
+.showCharacter {
+	position: relative;
+  left: 39%;
+}
+
+.movieCard {
+padding: 50px;
+font-size: 20px;
+width: 20%;
+position: fixed;
+    top: 20px;
+}
+
+.button {
+/* padding: 2px 20px 4px;
+border-style: dotted;
+margin: 7px; */
+text-align: center;
+border: rgb(12, 109, 163) solid 1px;
+border-radius: 12px;
+    padding: 1rem;
+    width: 17.5rem;
+    height: 3rem;
+    display: inline-block;
+    margin: 1rem 3rem;
+    box-shadow: 3px 4px #426778;
+}
+
+.movieName {
+	 text-align: center;
+}

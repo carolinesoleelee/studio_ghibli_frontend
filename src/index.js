@@ -10,10 +10,12 @@ function fetchMovies(){
 
 function renderAll(movie){
   let movieContainer = document.getElementById('movie-container')
+  movieContainer.classList.add('movieCard')
   let divElement = document.createElement('div')
   divElement.id = `${movie.name}-${movie.id}`
   movieContainer.appendChild(divElement)
   let movieName = document.createElement('button')
+  movieName.classList.add('button')
   movieName.innerText = movie.name
   divElement.appendChild(movieName)
   movieName.addEventListener('click', fetchCharacters)
@@ -32,14 +34,16 @@ function fetchCharacters(event){
 
 function renderCharacters(movieCharacters, movieName){
   let characterContainer = document.getElementById('show-character-container')
+  characterContainer.classList.add('showCharacter')
   characterContainer.innerHTML = ""
   let movieHeader = document.createElement('h1')
+  movieHeader.classList.add('movieName')
   movieHeader.innerText = `${movieName} Characters`
   characterContainer.appendChild(movieHeader)
 
   movieCharacters.forEach(character => {
     let divElement = document.createElement('div')
-    divElement.classList.add('card')
+    divElement.classList.add('characterCard')
     characterContainer.appendChild(divElement)
     let image = document.createElement('img')
     image.src = character.image_url
