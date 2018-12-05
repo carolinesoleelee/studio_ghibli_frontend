@@ -5,7 +5,19 @@ document.addEventListener('DOMContentLoaded', function(){
 function fetchMovies(){
   fetch('http://localhost:3000/api/v1/movies')
     .then(response => response.json())
-    .then(data => data.forEach(renderAll))
+    .then(data => {
+      data.forEach(renderAll)
+      //Welcome section
+      // let characterContainer = document.getElementById('show-character-container')
+      // let welcomeMessage = document.createElement('h1')
+      // welcomeMessage.innerText = "Welcome to the Studio Ghibli Fan Page!"
+      // let ghibliLogo = document.createElement('img')
+      // ghibliLogo.src = "https://seeklogo.com/images/S/Studio_Ghibli-logo-78E2716B50-seeklogo.com.png"
+      // let explanationMessage = document.createElement('h1')
+      // explanationMessage.innerText = "Click on any movie to see its characters!"
+      //
+      // characterContainer.append(welcomeMessage, ghibliLogo, explanationMessage)
+    })
 }
 
 function renderAll(movie){
