@@ -134,6 +134,7 @@ function showAddMessage(data){
 function showCharacterDetails(event, character){
   let characterContainer = document.getElementById('show-character-container')
   characterContainer.innerHTML = ""
+  characterContainer.dataset.characterId = character.id
   let characterName = document.createElement('h1')
   characterName.innerText = character.name
   let characterImage = document.createElement('img')
@@ -159,7 +160,7 @@ function showCharacterDetails(event, character){
 }
 
 function addLikes(event){
-    let id = (event.target.parentElement.id)
+    let id = (event.target.parentElement.dataset.characterId)
     let likes = (event.target.parentElement.childNodes[2])
     let onlyNum = parseInt(likes.innerText.split(' ')[0])
     onlyNum++
@@ -168,16 +169,16 @@ function addLikes(event){
 }
 
 function postLikes(id, onlyNum){
-fetch(`http://localhost:3000/api/v1/characters/${id}`,{
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({likes: onlyNum})
-})
-.then(response => response.json())
-.then(data => console.log(data))
-
+  fetch(`http://localhost:3000/api/v1/characters/${id}`,{
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+  	"Accept": "application/json"
+    },
+    body: JSON.stringify({likes: onlyNum})
+  })
+  .then(response => response.json())
+  .then(data => console.log(data))
 }
 
 function deleteCharacter(event, character){
@@ -185,7 +186,6 @@ function deleteCharacter(event, character){
     method: "DELETE"
   }).then(response => response.json())
   .then(data => deleteFromDOM(data))
-
 }
 
 function deleteFromDOM(data){
