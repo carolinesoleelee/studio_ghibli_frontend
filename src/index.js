@@ -54,7 +54,12 @@ function renderCharacters(movieCharacters, movieName, movieId){
     let name = document.createElement('h3')
     name.innerText = character.name
     name.classList.add('name')
-    divElement.appendChild(name)
+    let showCharacterButton = document.createElement('button')
+    showCharacterButton.innerText = "Character Information"
+    showCharacterButton.addEventListener('click', (event)=>{
+      showCharacterDetails(event, character)
+    })
+    divElement.append(name, showCharacterButton)
   })
 }
 
@@ -124,4 +129,32 @@ function showAddMessage(data){
   let characterAddedMessage = document.createElement('h1')
   characterAddedMessage.innerText = `The character ${data.name} has been added!`
   characterContainer.appendChild(characterAddedMessage)
+}
+
+function showCharacterDetails(event, character){
+  let characterContainer = document.getElementById('show-character-container')
+  characterContainer.innerHTML = ""
+  let characterName = document.createElement('h1')
+  characterName.innerText = character.name
+  let characterImage = document.createElement('img')
+  characterImage.src = character.image_url
+  let characterLikes = document.createElement('button')
+  characterLikes.innerText = "Likes"
+  characterLikes.addEventListener('click', addLikes)
+  let characterQuote = document.createElement('h3')
+  characterQuote.innerText = `"${character.quote}"`
+  let characterAbilities = document.createElement('h4')
+  characterAbilities.innerText = `Abilities: ${character.abilities}`
+  let characterSpecies = document.createElement('h4')
+  characterSpecies.innerText = `Species: ${character.species}`
+  let characterDescription = document.createElement('p')
+  characterDescription.innerText = `Description: ${character.description}`
+  let characterPersonality = document.createElement('p')
+  characterPersonality.innerText = `Personality: ${character.personality}`
+
+  characterContainer.append(characterName, characterImage, characterLikes, characterQuote, characterAbilities, characterSpecies, characterDescription, characterPersonality)
+}
+
+function addLikes(){
+  console.log('adding likes...')
 }
