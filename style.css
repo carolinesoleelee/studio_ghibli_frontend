@@ -1,7 +1,7 @@
 body {
 	display: grid;
 	grid-template-columns: 3fr 7fr;
-	/* background-image: url(https://upload.wikimedia.org/wikipedia/en/c/ca/Studio_Ghibli_logo.svg);
+	/* background-image: url(https://upload.wikimedia.org/wikipedia/en/thumb/c/ca/Studio_Ghibli_logo.svg/2880px-Studio_Ghibli_logo.svg.png);
 	width: cover; */
 	/* https://upload.wikimedia.org/wikipedia/en/c/ca/Studio_Ghibli_logo.svg */
 	/* https://upload.wikimedia.org/wikipedia/en/thumb/c/ca/Studio_Ghibli_logo.svg/2880px-Studio_Ghibli_logo.svg.png */
@@ -10,6 +10,7 @@ body {
 .characterCard {
 	text-align: center;
 	border: rgb(12, 109, 163) solid 1px;
+	background-color: white;
 	padding: 1rem;
 	width: 31.5rem;
 	height: 21rem;
