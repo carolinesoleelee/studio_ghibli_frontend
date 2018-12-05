@@ -1,8 +1,7 @@
 body {
 	display: grid;
 	grid-template-columns: 3fr 7fr;
-	/* background-image: url(https://upload.wikimedia.org/wikipedia/en/thumb/c/ca/Studio_Ghibli_logo.svg/2880px-Studio_Ghibli_logo.svg.png);
-	width: cover; */
+1
 	/* https://upload.wikimedia.org/wikipedia/en/c/ca/Studio_Ghibli_logo.svg */
 	/* https://upload.wikimedia.org/wikipedia/en/thumb/c/ca/Studio_Ghibli_logo.svg/2880px-Studio_Ghibli_logo.svg.png */
 }
