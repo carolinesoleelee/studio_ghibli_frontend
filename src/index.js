@@ -132,14 +132,16 @@ function showAddMessage(data){
 }
 
 function showCharacterDetails(event, character){
+
   let characterContainer = document.getElementById('show-character-container')
+  characterContainer.id = character.id
   characterContainer.innerHTML = ""
   let characterName = document.createElement('h1')
   characterName.innerText = character.name
   let characterImage = document.createElement('img')
   characterImage.src = character.image_url
   let characterLikes = document.createElement('button')
-  characterLikes.innerText = "Likes"
+  characterLikes.innerText = `${character.likes} Likes`
   characterLikes.addEventListener('click', addLikes)
   let characterQuote = document.createElement('h3')
   characterQuote.innerText = `"${character.quote}"`
@@ -155,6 +157,24 @@ function showCharacterDetails(event, character){
   characterContainer.append(characterName, characterImage, characterLikes, characterQuote, characterAbilities, characterSpecies, characterDescription, characterPersonality)
 }
 
-function addLikes(){
-  console.log('adding likes...')
+function addLikes(event){
+    let id = (event.target.parentElement.id)
+    let likes = (event.target.parentElement.childNodes[2])
+    let onlyNum = parseInt(likes.innerText.split(' ')[0])
+    onlyNum++
+    likes.innerText = `${onlyNum} Likes`
+    postLikes(id, onlyNum)
+}
+
+function postLikes(id, onlyNum){
+fetch(`http://localhost:3000/api/v1/characters/${id}`,{
+  method: "PATCH",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({likes: onlyNum})
+})
+.then(response => response.json())
+.then(data => console.log(data))
+
 }
