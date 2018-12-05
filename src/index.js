@@ -151,10 +151,24 @@ function showCharacterDetails(event, character){
   characterDescription.innerText = `Description: ${character.description}`
   let characterPersonality = document.createElement('p')
   characterPersonality.innerText = `Personality: ${character.personality}`
+  let characterDeleteButton = document.createElement('button')
+  characterDeleteButton.innerText = "Delete this character"
+  characterDeleteButton.addEventListener('click', (event) => deleteCharacter(event, character))
 
-  characterContainer.append(characterName, characterImage, characterLikes, characterQuote, characterAbilities, characterSpecies, characterDescription, characterPersonality)
+  characterContainer.append(characterName, characterImage, characterLikes, characterQuote, characterAbilities, characterSpecies, characterDescription, characterPersonality, characterDeleteButton)
 }
 
 function addLikes(){
   console.log('adding likes...')
+}
+
+function deleteCharacter(event, character){
+  fetch(`http://localhost:3000/api/v1/characters/${character.id}`, {
+    method: "DELETE"
+  }).then(response => response.json())
+  .then(data => console.log(data))
+}
+
+function deleteFromDOM(data){
+  console.log(data)
 }
