@@ -190,9 +190,5 @@ function deleteCharacter(event, character){
       "Access-Control-Allow-Credentials" : true
     }
   }).then(response => response.json())
-  .then(data => console.log(data))
-}
-
-function deleteFromDOM(data){
-  console.log(data)
+  .then(data => deleteFromDOM(data))
 }
