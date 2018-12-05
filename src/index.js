@@ -132,9 +132,7 @@ function showAddMessage(data){
 }
 
 function showCharacterDetails(event, character){
-
   let characterContainer = document.getElementById('show-character-container')
-  characterContainer.id = character.id
   characterContainer.innerHTML = ""
   let characterName = document.createElement('h1')
   characterName.innerText = character.name
@@ -184,11 +182,17 @@ fetch(`http://localhost:3000/api/v1/characters/${id}`,{
 
 function deleteCharacter(event, character){
   fetch(`http://localhost:3000/api/v1/characters/${character.id}`, {
-    method: "DELETE",
-    headers: {
-      "Access-Control-Allow-Origin" : "*",
-      "Access-Control-Allow-Credentials" : true
-    }
+    method: "DELETE"
   }).then(response => response.json())
   .then(data => deleteFromDOM(data))
+
+}
+
+function deleteFromDOM(data){
+  let characterContainer = document.getElementById('show-character-container')
+  characterContainer.innerHTML = ""
+  let deleteMessage = document.createElement('h1')
+  deleteMessage.innerText = `${data.name} has been deleted`
+  characterContainer.appendChild(deleteMessage)
+
 }
