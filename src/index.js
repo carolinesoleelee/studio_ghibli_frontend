@@ -181,3 +181,18 @@ fetch(`http://localhost:3000/api/v1/characters/${id}`,{
 .then(data => console.log(data))
 
 }
+
+function deleteCharacter(event, character){
+  fetch(`http://localhost:3000/api/v1/characters/${character.id}`, {
+    method: "DELETE",
+    headers: {
+      "Access-Control-Allow-Origin" : "*",
+      "Access-Control-Allow-Credentials" : true
+    }
+  }).then(response => response.json())
+  .then(data => console.log(data))
+}
+
+function deleteFromDOM(data){
+  console.log(data)
+}
