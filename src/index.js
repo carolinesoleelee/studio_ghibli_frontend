@@ -162,10 +162,12 @@ function showCharacterDetails(event, character){
   characterContainer.innerHTML = ""
   characterContainer.dataset.characterId = character.id
   let characterName = document.createElement('h1')
+  characterName.classList.add('wheat')
   characterName.innerText = character.name
   let characterImage = document.createElement('img')
   characterImage.src = character.image_url
   let characterLikes = document.createElement('button')
+  characterLikes.classList.add('likeBut')
   characterLikes.innerText = `${character.likes} Likes`
   characterLikes.addEventListener('click', addLikes)
   let characterQuote = document.createElement('h3')
