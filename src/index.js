@@ -7,16 +7,6 @@ function fetchMovies(){
     .then(response => response.json())
     .then(data => {
       data.forEach(renderAll)
-      //Welcome section
-      // let characterContainer = document.getElementById('show-character-container')
-      // let welcomeMessage = document.createElement('h1')
-      // welcomeMessage.innerText = "Welcome to the Studio Ghibli Fan Page!"
-      // let ghibliLogo = document.createElement('img')
-      // ghibliLogo.src = "https://seeklogo.com/images/S/Studio_Ghibli-logo-78E2716B50-seeklogo.com.png"
-      // let explanationMessage = document.createElement('h1')
-      // explanationMessage.innerText = "Click on any movie to see its characters!"
-      //
-      // characterContainer.append(welcomeMessage, ghibliLogo, explanationMessage)
     })
 }
 
@@ -176,11 +166,48 @@ function showCharacterDetails(event, character){
   characterDescription.innerText = `Description: ${character.description}`
   let characterPersonality = document.createElement('p')
   characterPersonality.innerText = `Personality: ${character.personality}`
+
+  //Comments
+  let commentsDiv = document.createElement('div')
+  commentsDiv.id = `comments-for-${character.id}`
+
   let characterDeleteButton = document.createElement('button')
  characterDeleteButton.innerText = "Delete this character"
  characterDeleteButton.addEventListener('click', (event) => deleteCharacter(event, character))
 
-  characterContainer.append(characterName, characterImage, characterLikes, characterQuote, characterAbilities, characterSpecies, characterDescription, characterPersonality, characterDeleteButton)
+  characterContainer.append(characterName, characterImage, characterLikes, characterQuote, characterAbilities, characterSpecies, characterDescription, characterPersonality, characterDeleteButton, commentsDiv)
+
+  fetchComments(character)
+}
+
+function fetchComments(character){
+  let characterId = character.id
+  fetch('http://localhost:3000/api/v1/comments')
+    .then(response => response.json())
+    .then(data => renderComments(data, characterId))
+}
+
+function renderComments(data, characterId){
+  let commentsDiv = document.getElementById(`comments-for-${characterId}`)
+  let commentsHeading = document.createElement('h3')
+  commentsHeading.innerText = 'Comments: '
+  commentsDiv.append(commentsHeading)
+  let commentsList = document.createElement('ul')
+  myComments = data.filter(comment => comment.character_id === characterId)
+  myComments.forEach(comment =>{
+    let commentItem = document.createElement('li')
+    let commentUsername = document.createElement('h5')
+    let commentContent = document.createElement('p')
+    commentUsername.innerText = comment.username
+    commentContent.innerText = comment.content
+    commentItem.append(commentUsername, commentContent)
+    commentsList.appendChild(commentItem)
+    commentsDiv.appendChild(commentsList)
+  })
+  let commentButton = document.createElement('button')
+  commentButton.innerText = 'Add a new comment!'
+  commentButton.addEventListener('click', ()=>showCommentForm(characterId))
+  commentsDiv.append(commentButton)
 }
 
 function addLikes(event){
@@ -218,5 +245,57 @@ function deleteFromDOM(data){
   let deleteMessage = document.createElement('h1')
   deleteMessage.innerText = `${data.name} has been deleted`
   characterContainer.appendChild(deleteMessage)
+}
 
+function showCommentForm(characterId){
+  let characterContainer = document.getElementById('show-character-container')
+  characterContainer.innerHTML = ""
+  let commentFormHeader = document.createElement('h3')
+  commentFormHeader.innerText = "Add a Comment Here"
+  let commentForm = document.createElement('form')
+  commentForm.id = `comment-for-${characterId}`
+  commentForm.classList.add('new-form')
+  let usernameInput = document.createElement('input')
+  usernameInput.classList.add('input-field')
+  usernameInput.placeholder = 'Username'
+  let contentInput = document.createElement('textarea')
+  contentInput.classList.add('input-field')
+  contentInput.placeholder = 'comment'
+  let commentSubmit = document.createElement('input')
+  commentSubmit.classList.add('input-field')
+  commentSubmit.type = 'submit'
+
+  commentForm.append(usernameInput, contentInput, commentSubmit)
+
+  commentForm.addEventListener('submit', (event)=> addComment(event, characterId))
+
+  characterContainer.append(commentFormHeader, commentForm)
+}
+
+function addComment(event, characterId){
+  event.preventDefault()
+  let form = document.getElementById(`comment-for-${characterId}`)
+  username = form.querySelectorAll('input')[0].value
+  content = form.querySelector('textarea').value
+  data = {
+    character_id: characterId,
+    content: content,
+    username: username
+  }
+  fetch('http://localhost:3000/api/v1/comments', {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({comment: data})
+  }).then(response => response.json())
+  .then(data => showCommentAddedMessage(data))
+}
+
+function showCommentAddedMessage(data){
+  let characterContainer = document.getElementById('show-character-container')
+  characterContainer.innerHTML = ""
+  let commentMessage = document.createElement('h1')
+  commentMessage.innerText = 'Your comment has been added!'
+  characterContainer.appendChild(commentMessage)
 }
