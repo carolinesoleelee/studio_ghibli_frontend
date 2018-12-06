@@ -1,10 +1,15 @@
 body {
 	display: grid;
 	grid-template-columns: 3fr 7fr;
-1
+ 	background-image: url(https://cdn.dribbble.com/users/513906/screenshots/2859254/cut-2.gif);
+	background-repeat: no-repeat;
+	background-size: 50% 100%;
+	background-attachment: fixed;
+	background-position: 65% 50%;
 	/* https://upload.wikimedia.org/wikipedia/en/c/ca/Studio_Ghibli_logo.svg */
 	/* https://upload.wikimedia.org/wikipedia/en/thumb/c/ca/Studio_Ghibli_logo.svg/2880px-Studio_Ghibli_logo.svg.png */
 }
+
 
 .characterCard {
 	text-align: center;
@@ -14,7 +19,7 @@ body {
 	width: 31.5rem;
 	height: 21rem;
 	display: inline-grid;
-	margin: 1rem 2rem;
+	margin: 1.5rem 2rem;
 	box-shadow: 3px 4px #426778;
 }
 
@@ -51,9 +56,41 @@ border-radius: 12px;
 }
 
 .name {
+	text-align: center;
+/* border: rgb(12, 109, 163) solid 1px; */
+/* border-radius: 12px; */
+padding: 5rem;
+width: 17.5rem;
+height: 2rem;
+display: inline-block;
+margin: -8rem 2rem;
 	font-family: 'Poiret One', cursive;
 	    font-weight: lighter;
-	    color: #836f79;
+	    color: #f6f6f6;
+}
+
+.characterBut {
+	text-align: center;
+border: rgb(12, 109, 163) solid 1px;
+border-radius: 9px;
+padding: 0rem;
+width: 4.5rem;
+height: 3rem;
+display: inline-block;
+margin: 1rem 26rem;
+}
+
+.characterTitle {
+	border: rgb(12, 109, 163) solid 1px;
+    border-radius: 5px;
+    padding: 1rem;
+    width: 44.5rem;
+    height: 3rem;
+		position: fixed;
+    display: inline-block;
+    margin: 1rem -5rem;
+    background: white;
+    box-shadow: 5px 5px #426778;
 }
 
 .new-form{

@@ -46,12 +46,14 @@ function fetchCharacters(event){
 
 function renderCharacters(movieCharacters, movieName, movieId){
   let characterContainer = document.getElementById('show-character-container')
+  let title = document.getElementById('window')
   characterContainer.classList.add('showCharacter')
   characterContainer.innerHTML = ""
   let addCharacterButton = document.createElement('button')
   addCharacterButton.innerText = 'Add a new character!'
   addCharacterButton.addEventListener('click', () => {showForm(movieName, movieId)})
   let movieHeader = document.createElement('h1')
+  movieHeader.classList.add('characterTitle')
   movieHeader.classList.add('movieName')
   movieHeader.innerText = `${movieName} Characters`
   characterContainer.append(movieHeader, addCharacterButton)
@@ -68,6 +70,7 @@ function renderCharacters(movieCharacters, movieName, movieId){
     name.classList.add('name')
     let showCharacterButton = document.createElement('button')
     showCharacterButton.innerText = "Character Information"
+    showCharacterButton.classList.add('characterBut')
     showCharacterButton.addEventListener('click', (event)=>{
       showCharacterDetails(event, character)
     })
