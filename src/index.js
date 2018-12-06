@@ -47,9 +47,11 @@ function fetchCharacters(event){
 function renderCharacters(movieCharacters, movieName, movieId){
   let characterContainer = document.getElementById('show-character-container')
   let title = document.getElementById('window')
+  title.classList.add('window')
   characterContainer.classList.add('showCharacter')
   characterContainer.innerHTML = ""
   let addCharacterButton = document.createElement('button')
+  addCharacterButton.classList.add('createNewBut')
   addCharacterButton.innerText = 'Add a new character!'
   addCharacterButton.addEventListener('click', () => {showForm(movieName, movieId)})
   let movieHeader = document.createElement('h1')

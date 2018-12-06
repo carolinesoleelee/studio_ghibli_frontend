@@ -95,13 +95,23 @@ margin: 1rem 26rem;
     margin: -6rem -5rem;
     background: white;
     box-shadow: 5px 5px #426778;
+		color: #000000b5;
+		font-style: italic;
+		letter-spacing: 1.5px;
 }
 
 .new-form{
-	margin-top: 5em;
-	margin-left: 4em;
 	background-color: steelblue;
 	padding: 1em;
+	/* text-align: center; */
+	/* border: rgb(12, 109, 163) solid 1px; */
+	border-radius: 12px;
+	padding: 1rem;
+	width: 17.5rem;
+	/* height: 3rem; */
+	/* display: inline-block; */
+	margin: 1rem 6rem;
+	box-shadow: 6px 7px #426778;
 }
 
 .input-field{
@@ -109,4 +119,35 @@ margin: 1rem 26rem;
 	margin: 2em auto;
 	display: block;
 	text-align: center;
+}
+
+.window {
+	/* border: aliceblue solid 4px; */
+	background-color: white;
+	height: 22px;
+	position: fixed;
+	/* text-align: center; */
+	/* border: rgb(12, 109, 163) solid 1px; */
+	/* border-radius: 12px; */
+	padding: 1rem;
+	width: 72.5rem;
+	/* height: 3rem; */
+	/* display: inline-block; */
+	margin: -2.5rem 26rem;
+	/* box-shadow: 3px 4px #426778; */
+	z-index: 1;
+}
+
+.createNewBut {
+	/* text-align: center; */
+	border: rgb(12, 109, 163) solid 1px;
+	border-radius: 9px;
+	padding: -3rem;
+	width: 6.5rem;
+	height: 3rem;
+	/* display: inline-block; */
+	margin: 1.5rem 59rem;
+	position: fixed;
+	/* top: 50%; */
+	transform: perspective(1px) translateY(-214%);
 }
