@@ -81,23 +81,32 @@ function showForm(movieName, movieId){
   let formHeader = document.createElement('h2')
   formHeader.innerText = `Add a character for ${movieName} here!`
   let addCharacterForm = document.createElement('form')
+  addCharacterForm.classList.add('new-form')
   addCharacterForm.addEventListener('submit', (event)=>{ addNewCharacter(event, movieId) })
   let nameInput = document.createElement('input')
   nameInput.placeholder = "Character Name"
+  nameInput.classList.add('input-field')
   let imageInput = document.createElement('input')
   imageInput.placeholder = "Image Url"
+  imageInput.classList.add('input-field')
   let descInput = document.createElement('input')
   descInput.placeholder = "Character Description"
+  descInput.classList.add('input-field')
   let quoteInput = document.createElement('input')
   quoteInput.placeholder = "Character Quote"
+  quoteInput.classList.add('input-field')
   let abilitiesInput = document.createElement('input')
   abilitiesInput.placeholder = "Character Abilities"
+  abilitiesInput.classList.add('input-field')
   let speciesInput = document.createElement('input')
   speciesInput.placeholder = "Character Species"
+  speciesInput.classList.add('input-field')
   let personalityInput = document.createElement('input')
   personalityInput.placeholder = "Character Personality"
+  personalityInput.classList.add('input-field')
   let submitButton = document.createElement('input')
   submitButton.type = 'submit'
+  submitButton.classList.add('input-field')
 
   addCharacterForm.append(nameInput, imageInput, descInput, quoteInput, abilitiesInput, speciesInput, personalityInput, submitButton)
 
