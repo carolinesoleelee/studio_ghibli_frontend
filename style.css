@@ -25,7 +25,11 @@ body {
 
 .showCharacter {
 	position: relative;
-  left: 39%;
+	left: 39%;
+	height: 50%;
+	width: 700px;
+	/* overflow: auto; */
+	margin-top: 110px;
 }
 
 .movieCard {
@@ -50,7 +54,7 @@ border-radius: 12px;
     margin: 1rem 6rem;
     box-shadow: 3px 4px #426778;
 }
- 
+
 .movieName {
 	 text-align: center;
 }
@@ -88,7 +92,7 @@ margin: 1rem 26rem;
     height: 3rem;
 		position: fixed;
     display: inline-block;
-    margin: 1rem -5rem;
+    margin: -6rem -5rem;
     background: white;
     box-shadow: 5px 5px #426778;
 }
