@@ -150,7 +150,17 @@ function showAddMessage(data){
 function showCharacterDetails(event, character){
   let characterContainer = document.getElementById('show-character-container')
   characterContainer.innerHTML = ""
-  characterContainer.dataset.characterId = character.id
+
+
+  let divElement = document.createElement('div')
+  characterContainer.appendChild(divElement)
+  divElement.classList.add('show')
+
+  divElement.dataset.characterId = character.id
+
+  let divEle = document.createElement('div')
+  characterContainer.appendChild(divEle)
+
   let characterName = document.createElement('h1')
   characterName.classList.add('wheat')
   characterName.innerText = character.name
@@ -171,6 +181,8 @@ function showCharacterDetails(event, character){
   let characterPersonality = document.createElement('p')
   characterPersonality.innerText = `Personality: ${character.personality}`
 
+  //div
+
   //Comments
   let commentsDiv = document.createElement('div')
   commentsDiv.id = `comments-for-${character.id}`
@@ -179,8 +191,8 @@ function showCharacterDetails(event, character){
  characterDeleteButton.innerText = "Delete this character"
  characterDeleteButton.addEventListener('click', (event) => deleteCharacter(event, character))
 
-  characterContainer.append(characterName, characterImage, characterLikes, characterQuote, characterAbilities, characterSpecies, characterDescription, characterPersonality, characterDeleteButton, commentsDiv)
-
+  divElement.append(characterName, characterImage, characterLikes)
+  divElement.append(characterQuote, characterAbilities, characterSpecies, characterDescription, characterPersonality, characterDeleteButton, commentsDiv)
   fetchComments(character)
 }
 
@@ -216,6 +228,7 @@ function renderComments(data, characterId){
 
 function addLikes(event){
     let id = (event.target.parentElement.dataset.characterId)
+    console.log(event.target.parentElement)
     let likes = (event.target.parentElement.childNodes[2])
     let onlyNum = parseInt(likes.innerText.split(' ')[0])
     onlyNum++

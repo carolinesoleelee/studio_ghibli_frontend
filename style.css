@@ -154,7 +154,7 @@ margin: 1rem 26rem;
 
 .likeBut {
 	width: 22%;
-height: 68%;
+height: 31.5%;
 /* margin: -8rem 34rem; */
 position: absolute;
 right: 2%;
@@ -165,4 +165,13 @@ right: 2%;
 .wheat {
 	    background: wheat;
 			text-align: center;
+}
+
+.show {
+	background: #ffffffe0;
+	position: absolute;
+    top: -59%;
+		width: 96%;
+
+
 }
