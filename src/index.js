@@ -3,6 +3,12 @@ document.addEventListener('DOMContentLoaded', function(){
 })
 
 function fetchMovies(){
+  let characterContainer = document.getElementById('show-character-container')
+  characterContainer.classList.add('showCharacter')
+  let welcomeHeader = document.createElement('h1')
+  welcomeHeader.classList.add('header')
+  welcomeHeader.innerText = "Welcome to the Studio Ghibli Fan Page!"
+  characterContainer.append(welcomeHeader)
   fetch('http://localhost:3000/api/v1/movies')
     .then(response => response.json())
     .then(data => {
@@ -11,6 +17,7 @@ function fetchMovies(){
 }
 
 function renderAll(movie){
+  let characterContainer = document.getElementById('show-character-container')
   let movieContainer = document.getElementById('movie-container')
   movieContainer.classList.add('movieCard')
   let divElement = document.createElement('div')

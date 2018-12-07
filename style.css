@@ -151,3 +151,10 @@ margin: 1rem 26rem;
 	/* top: 50%; */
 	transform: perspective(1px) translateY(-214%);
 }
+
+.header {
+	font-family: 'Poirot One', cursive;
+  font-size: 50px;
+  text-align: center;
+  color: rgb(58,92,109);
+}
